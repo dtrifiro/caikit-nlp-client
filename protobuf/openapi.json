@@ -1,0 +1,1389 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/{model_id}/task/text-generation": {
+      "post": {
+        "summary": " Handler",
+        "operationId": "_handler_api_v1__model_id__task_text_generation_post",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextGenerationTaskRequestHttpRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedTextResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{model_id}/task/server-streaming-text-generation": {
+      "post": {
+        "summary": " Handler",
+        "operationId": "_handler_api_v1__model_id__task_server_streaming_text_generation_post",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerStreamingTextGenerationTaskRequestHttpRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedTextStreamResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{model_id}/task/text-classification": {
+      "post": {
+        "summary": " Handler",
+        "operationId": "_handler_api_v1__model_id__task_text_classification_post",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextClassificationTaskRequestHttpRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationResults"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/{model_id}/task/token-classification": {
+      "post": {
+        "summary": " Handler",
+        "operationId": "_handler_api_v1__model_id__task_token_classification_post",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenClassificationTaskRequestHttpRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenClassificationResults"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/TextGenerationTaskTextGenerationTrain": {
+      "post": {
+        "summary": " Handler",
+        "operationId": "_handler_api_v1_TextGenerationTaskTextGenerationTrain_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextGenerationTaskTextGenerationTrainRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/TextGenerationTaskPeftPromptTuningTrain": {
+      "post": {
+        "summary": " Handler",
+        "operationId": "_handler_api_v1_TextGenerationTaskPeftPromptTuningTrain_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextGenerationTaskPeftPromptTuningTrainRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrainingJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": " Health Check",
+        "operationId": "_health_check_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ClassificationResult": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.ClassificationResult"
+      },
+      "ClassificationResults": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/ClassificationResult"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.ClassificationResults"
+      },
+      "DataStreamSourceGenerationTrainRecord": {
+        "properties": {
+          "data_stream": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DataStreamSourceGenerationTrainRecordJsonData"
+              },
+              {
+                "$ref": "#/components/schemas/File"
+              },
+              {
+                "$ref": "#/components/schemas/ListOfFiles"
+              },
+              {
+                "$ref": "#/components/schemas/Directory"
+              },
+              {
+                "$ref": "#/components/schemas/S3Files"
+              }
+            ],
+            "title": "Data Stream"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.runtime.Nlp.DataStreamSourceGenerationTrainRecord"
+      },
+      "DataStreamSourceGenerationTrainRecordJsonData": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/GenerationTrainRecord"
+            },
+            "type": "array",
+            "title": "Data"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.runtime.Nlp.DataStreamSourceGenerationTrainRecordJsonData"
+      },
+      "Directory": {
+        "properties": {
+          "dirname": {
+            "type": "string",
+            "title": "Dirname"
+          },
+          "extension": {
+            "type": "string",
+            "title": "Extension"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.common.Directory"
+      },
+      "ExponentialDecayLengthPenalty": {
+        "properties": {
+          "start_index": {
+            "type": "integer",
+            "title": "Start Index"
+          },
+          "decay_factor": {
+            "type": "number",
+            "title": "Decay Factor"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.caikit_nlp.ExponentialDecayLengthPenalty"
+      },
+      "File": {
+        "properties": {
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.common.File"
+      },
+      "FinishReason": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "title": "FinishReason"
+      },
+      "GeneratedTextResult": {
+        "properties": {
+          "generated_text": {
+            "type": "string",
+            "title": "Generated Text"
+          },
+          "generated_tokens": {
+            "type": "integer",
+            "title": "Generated Tokens"
+          },
+          "finish_reason": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FinishReason"
+              }
+            ]
+          },
+          "producer_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ProducerId"
+              }
+            ]
+          },
+          "input_token_count": {
+            "type": "integer",
+            "title": "Input Token Count"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.GeneratedTextResult"
+      },
+      "GeneratedTextStreamResult": {
+        "properties": {
+          "generated_text": {
+            "type": "string",
+            "title": "Generated Text"
+          },
+          "tokens": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/GeneratedToken"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tokens"
+          },
+          "details": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TokenStreamDetails"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "producer_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ProducerId"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.GeneratedTextStreamResult"
+      },
+      "GeneratedToken": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "logprob": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logprob"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.GeneratedToken"
+      },
+      "GenerationTrainRecord": {
+        "properties": {
+          "input": {
+            "type": "string",
+            "title": "Input"
+          },
+          "output": {
+            "type": "string",
+            "title": "Output"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.caikit_nlp.GenerationTrainRecord"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ListOfFiles": {
+        "properties": {
+          "files": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Files"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.common.ListOfFiles"
+      },
+      "ProducerId": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.common.ProducerId"
+      },
+      "S3Files": {
+        "properties": {
+          "endpoint": {
+            "type": "string",
+            "title": "Endpoint"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "bucket": {
+            "type": "string",
+            "title": "Bucket"
+          },
+          "accessKey": {
+            "type": "string",
+            "title": "Accesskey"
+          },
+          "secretKey": {
+            "type": "string",
+            "title": "Secretkey"
+          },
+          "IAM_id": {
+            "type": "string",
+            "title": "Iam Id"
+          },
+          "IAM_api_key": {
+            "type": "string",
+            "title": "Iam Api Key"
+          },
+          "files": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Files"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.common.S3Files"
+      },
+      "S3Path": {
+        "properties": {
+          "endpoint": {
+            "type": "string",
+            "title": "Endpoint"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "bucket": {
+            "type": "string",
+            "title": "Bucket"
+          },
+          "accessKey": {
+            "type": "string",
+            "title": "Accesskey"
+          },
+          "secretKey": {
+            "type": "string",
+            "title": "Secretkey"
+          },
+          "IAM_id": {
+            "type": "string",
+            "title": "Iam Id"
+          },
+          "IAM_api_key": {
+            "type": "string",
+            "title": "Iam Api Key"
+          },
+          "path": {
+            "type": "string",
+            "title": "Path"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.common.S3Path"
+      },
+      "ServerStreamingTextGenerationTaskRequestHttpRequest": {
+        "properties": {
+          "inputs": {
+            "type": "string",
+            "title": "Inputs"
+          },
+          "parameters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServerStreamingTextGenerationTaskRequestParameters"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TextGenerationTask.ServerStreamingTextGenerationTaskRequestHttpRequest"
+      },
+      "ServerStreamingTextGenerationTaskRequestParameters": {
+        "properties": {
+          "max_new_tokens": {
+            "type": "integer",
+            "title": "Max New Tokens"
+          },
+          "min_new_tokens": {
+            "type": "integer",
+            "title": "Min New Tokens"
+          },
+          "truncate_input_tokens": {
+            "type": "integer",
+            "title": "Truncate Input Tokens"
+          },
+          "decoding_method": {
+            "type": "string",
+            "title": "Decoding Method"
+          },
+          "top_k": {
+            "type": "integer",
+            "title": "Top K"
+          },
+          "top_p": {
+            "type": "number",
+            "title": "Top P"
+          },
+          "typical_p": {
+            "type": "number",
+            "title": "Typical P"
+          },
+          "temperature": {
+            "type": "number",
+            "title": "Temperature"
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "repetition_penalty": {
+            "type": "number",
+            "title": "Repetition Penalty"
+          },
+          "max_time": {
+            "type": "number",
+            "title": "Max Time"
+          },
+          "exponential_decay_length_penalty": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExponentialDecayLengthPenalty"
+              }
+            ]
+          },
+          "stop_sequences": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Stop Sequences"
+          },
+          "preserve_input_text": {
+            "type": "boolean",
+            "title": "Preserve Input Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TextGenerationTask.ServerStreamingTextGenerationTaskRequestParameters"
+      },
+      "TextClassificationTaskRequestHttpRequest": {
+        "properties": {
+          "inputs": {
+            "type": "string",
+            "title": "Inputs"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TextClassificationTask.TextClassificationTaskRequestHttpRequest"
+      },
+      "TextGenerationTaskPeftPromptTuningTrainParameters": {
+        "properties": {
+          "base_model": {
+            "type": "string",
+            "title": "Base Model"
+          },
+          "train_stream": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DataStreamSourceGenerationTrainRecord"
+              }
+            ]
+          },
+          "tuning_config": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TuningConfig"
+              }
+            ]
+          },
+          "val_stream": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DataStreamSourceGenerationTrainRecord"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "device": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Device"
+          },
+          "tuning_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tuning Type"
+          },
+          "num_epochs": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Epochs"
+          },
+          "learning_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Learning Rate"
+          },
+          "verbalizer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verbalizer"
+          },
+          "batch_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Batch Size"
+          },
+          "max_source_length": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Source Length"
+          },
+          "max_target_length": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Target Length"
+          },
+          "accumulate_steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accumulate Steps"
+          },
+          "torch_dtype": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Torch Dtype"
+          },
+          "silence_progress_bars": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Silence Progress Bars"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.runtime.Nlp.TextGenerationTaskPeftPromptTuningTrainParameters"
+      },
+      "TextGenerationTaskPeftPromptTuningTrainRequest": {
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "title": "Model Name"
+          },
+          "output_path": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/S3Path"
+              }
+            ]
+          },
+          "parameters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TextGenerationTaskPeftPromptTuningTrainParameters"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.runtime.Nlp.TextGenerationTaskPeftPromptTuningTrainRequest"
+      },
+      "TextGenerationTaskRequestHttpRequest": {
+        "properties": {
+          "inputs": {
+            "type": "string",
+            "title": "Inputs"
+          },
+          "parameters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TextGenerationTaskRequestParameters"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TextGenerationTask.TextGenerationTaskRequestHttpRequest"
+      },
+      "TextGenerationTaskRequestParameters": {
+        "properties": {
+          "max_new_tokens": {
+            "type": "integer",
+            "title": "Max New Tokens"
+          },
+          "min_new_tokens": {
+            "type": "integer",
+            "title": "Min New Tokens"
+          },
+          "truncate_input_tokens": {
+            "type": "integer",
+            "title": "Truncate Input Tokens"
+          },
+          "decoding_method": {
+            "type": "string",
+            "title": "Decoding Method"
+          },
+          "top_k": {
+            "type": "integer",
+            "title": "Top K"
+          },
+          "top_p": {
+            "type": "number",
+            "title": "Top P"
+          },
+          "typical_p": {
+            "type": "number",
+            "title": "Typical P"
+          },
+          "temperature": {
+            "type": "number",
+            "title": "Temperature"
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "repetition_penalty": {
+            "type": "number",
+            "title": "Repetition Penalty"
+          },
+          "max_time": {
+            "type": "number",
+            "title": "Max Time"
+          },
+          "exponential_decay_length_penalty": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExponentialDecayLengthPenalty"
+              }
+            ]
+          },
+          "stop_sequences": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Stop Sequences"
+          },
+          "preserve_input_text": {
+            "type": "boolean",
+            "title": "Preserve Input Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TextGenerationTask.TextGenerationTaskRequestParameters"
+      },
+      "TextGenerationTaskTextGenerationTrainParameters": {
+        "properties": {
+          "base_model": {
+            "type": "string",
+            "title": "Base Model"
+          },
+          "train_stream": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DataStreamSourceGenerationTrainRecord"
+              }
+            ]
+          },
+          "torch_dtype": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Torch Dtype"
+          },
+          "max_source_length": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Source Length"
+          },
+          "max_target_length": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Target Length"
+          },
+          "batch_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Batch Size"
+          },
+          "num_epochs": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Epochs"
+          },
+          "accumulate_steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accumulate Steps"
+          },
+          "random_seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Random Seed"
+          },
+          "lr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lr"
+          },
+          "use_iterable_dataset": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Use Iterable Dataset"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.runtime.Nlp.TextGenerationTaskTextGenerationTrainParameters"
+      },
+      "TextGenerationTaskTextGenerationTrainRequest": {
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "title": "Model Name"
+          },
+          "output_path": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/S3Path"
+              }
+            ]
+          },
+          "parameters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TextGenerationTaskTextGenerationTrainParameters"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.runtime.Nlp.TextGenerationTaskTextGenerationTrainRequest"
+      },
+      "TokenClassificationResult": {
+        "properties": {
+          "start": {
+            "type": "integer",
+            "title": "Start"
+          },
+          "end": {
+            "type": "integer",
+            "title": "End"
+          },
+          "word": {
+            "type": "string",
+            "title": "Word"
+          },
+          "entity": {
+            "type": "string",
+            "title": "Entity"
+          },
+          "entity_group": {
+            "type": "string",
+            "title": "Entity Group"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "token_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Token Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.TokenClassificationResult"
+      },
+      "TokenClassificationResults": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/TokenClassificationResult"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.TokenClassificationResults"
+      },
+      "TokenClassificationTaskRequestHttpRequest": {
+        "properties": {
+          "inputs": {
+            "type": "string",
+            "title": "Inputs"
+          },
+          "parameters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TokenClassificationTaskRequestParameters"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TokenClassificationTask.TokenClassificationTaskRequestHttpRequest"
+      },
+      "TokenClassificationTaskRequestParameters": {
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "title": "Threshold"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit.http.TokenClassificationTask.TokenClassificationTaskRequestParameters"
+      },
+      "TokenStreamDetails": {
+        "properties": {
+          "finish_reason": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FinishReason"
+              }
+            ]
+          },
+          "generated_tokens": {
+            "type": "integer",
+            "title": "Generated Tokens"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seed"
+          },
+          "input_token_count": {
+            "type": "integer",
+            "title": "Input Token Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.nlp.TokenStreamDetails"
+      },
+      "TrainingJob": {
+        "properties": {
+          "training_id": {
+            "type": "string",
+            "title": "Training Id"
+          },
+          "model_name": {
+            "type": "string",
+            "title": "Model Name"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.runtime.TrainingJob"
+      },
+      "TuningConfig": {
+        "properties": {
+          "num_virtual_tokens": {
+            "type": "integer",
+            "title": "Num Virtual Tokens"
+          },
+          "prompt_tuning_init_text": {
+            "type": "string",
+            "title": "Prompt Tuning Init Text"
+          },
+          "prompt_tuning_init_method": {
+            "type": "string",
+            "title": "Prompt Tuning Init Method"
+          },
+          "prompt_tuning_init_source_model": {
+            "type": "string",
+            "title": "Prompt Tuning Init Source Model"
+          },
+          "output_model_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Output Model Types"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "caikit_data_model.caikit_nlp.TuningConfig"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

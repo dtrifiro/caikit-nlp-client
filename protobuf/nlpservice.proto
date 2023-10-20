@@ -1,0 +1,28 @@
+
+/*------------------------------------------------------------------------------
+ * AUTO GENERATED
+ *----------------------------------------------------------------------------*/
+
+syntax = "proto3";
+package caikit.runtime.Nlp;
+import "caikit.runtime.Nlp.bidistreamingtokenclassificationtaskrequest.proto";
+import "caikit.runtime.Nlp.serverstreamingtextgenerationtaskrequest.proto";
+import "caikit.runtime.Nlp.textclassificationtaskrequest.proto";
+import "caikit.runtime.Nlp.textgenerationtaskrequest.proto";
+import "caikit.runtime.Nlp.tokenclassificationtaskrequest.proto";
+import "caikit_data_model.nlp.classificationresults.proto";
+import "caikit_data_model.nlp.generatedtextresult.proto";
+import "caikit_data_model.nlp.generatedtextstreamresult.proto";
+import "caikit_data_model.nlp.tokenclassificationresults.proto";
+import "caikit_data_model.nlp.tokenclassificationstreamresult.proto";
+
+
+/*-- SERVICES ----------------------------------------------------------------*/
+
+service NlpService {
+  rpc TextGenerationTaskPredict(caikit.runtime.Nlp.TextGenerationTaskRequest) returns (caikit_data_model.nlp.GeneratedTextResult);
+  rpc ServerStreamingTextGenerationTaskPredict(caikit.runtime.Nlp.ServerStreamingTextGenerationTaskRequest) returns (stream caikit_data_model.nlp.GeneratedTextStreamResult);
+  rpc TextClassificationTaskPredict(caikit.runtime.Nlp.TextClassificationTaskRequest) returns (caikit_data_model.nlp.ClassificationResults);
+  rpc TokenClassificationTaskPredict(caikit.runtime.Nlp.TokenClassificationTaskRequest) returns (caikit_data_model.nlp.TokenClassificationResults);
+  rpc BidiStreamingTokenClassificationTaskPredict(stream caikit.runtime.Nlp.BidiStreamingTokenClassificationTaskRequest) returns (stream caikit_data_model.nlp.TokenClassificationStreamResult);
+}
