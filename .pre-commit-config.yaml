@@ -28,3 +28,7 @@ repos:
         args: ["-c", "pyproject.toml", "--quiet"]
         files: "caikit_nlp_client/"
         additional_dependencies: [".[toml]"]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
