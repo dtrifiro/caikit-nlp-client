@@ -29,7 +29,7 @@ requires-python = ">=3.9"
 
 dependencies = [
     "caikit-nlp @ git+https://github.com/caikit/caikit-nlp@4f42230",
-    "caikit @ git+https://github.com/caikit/caikit@79f1f1a",
+    "caikit @ git+https://github.com/caikit/caikit@02bfc41", # 02bfc41 a commit behind 0.23.0
     "protobuf==4.24.4",
     "alchemy-config==1.1.2",
     "alchemy-logging==1.2.1",
