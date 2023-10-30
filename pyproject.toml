@@ -1,29 +1,53 @@
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61", "setuptools_scm[toml]>=7"]
 
-[tool.poetry]
+
+[project]
 name = "caikit_nlp_client"
-version = "0.0.1"
-description = "Caikit Client"
-license =  "Apache-2.0"
+dynamic = ["version"]
+description = "caikit-nlp client"
+# license =  "Apache-2.0"
+license = { text = "Apache License 2.0" }
+
 readme = "README.md"
 classifiers=[
-    "License :: OSI Approved :: Apache Software License"
+    "License :: OSI Approved :: Apache Software License",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
-authors = ["Vaibhav Jain <vajain@redhat.com>", "Laurentiu Bradin <laurentiu.bradin@ibm.com>"]
+authors = [
+    { name = "Vaibhav Jain", email = "vajain@redhat.com" },
+    { name = "Laurentiu Bradin", email = "laurentiu.bradin@ibm.com" },
+    { name = "Daniele Trifirò", email = "dtrifiro@redhat.com" },
+]
+requires-python = ">=3.9"
 
-[tool.poetry.dependencies]
-python = "^3.9"
-caikit-nlp = {git = "https://github.com/caikit/caikit-nlp", rev = "4f42230"}
-caikit = {git = "https://github.com/opendatahub-io/caikit", rev = "79f1f1a"}
-protobuf  ="4.24.4"
-alchemy-config="1.1.2"
-alchemy-logging="1.2.1"
-grpcio = "1.59.0"
-grpcio-reflection = "1.59.0"
-#build time dependencies
-grpcio-tools = "1.59.0"
+dependencies = [
+    "caikit-nlp @ git+https://github.com/caikit/caikit-nlp@4f42230",
+    "caikit @ git+https://github.com/caikit/caikit@79f1f1a",
+    "protobuf==4.24.4",
+    "alchemy-config==1.1.2",
+    "alchemy-logging==1.2.1",
+    "grpcio==1.59.0",
+    "grpcio-reflection==1.59.0",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "tests.*"]
+namespaces = false
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.1.3",
+    "grpcio-tools==1.59.0",
+    "pytest",
+    "pytest-cov",
+]
 
 [tool.bandit]
 exclude_dirs = ["tests"]
@@ -35,3 +59,6 @@ log_format = "%(asctime)s %(levelname)s %(message)s"
 log_date_format = "%Y-%m-%d %H:%M:%S"
 addopts = "-ra --cov-config pyproject.toml"
 
+[tool.coverage.run]
+branch = true
+source = ["caikit_nlp_client", "tests"]
