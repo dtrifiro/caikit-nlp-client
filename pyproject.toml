@@ -1,14 +1,6 @@
-[tool.poetry.dependencies]
-python = "^3.9"
-caikit-nlp = {git = "https://github.com/caikit/caikit-nlp", rev = "4f42230"}
-caikit = {git = "https://github.com/opendatahub-io/caikit", rev = "79f1f1a"}
-protobuf  ="4.24.4"
-alchemy-config="1.1.2"
-alchemy-logging="1.2.1"
-grpcio = "1.59.0"
-grpcio-reflection = "1.59.0"
-#build time dependencies
-grpcio-tools = "1.59.0"
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "caikit_nlp_client"
@@ -21,7 +13,25 @@ classifiers=[
 ]
 authors = ["Vaibhav Jain <vajain@redhat.com>", "Laurentiu Bradin <laurentiu.bradin@ibm.com>"]
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.dependencies]
+python = "^3.9"
+caikit-nlp = {git = "https://github.com/caikit/caikit-nlp", rev = "4f42230"}
+caikit = {git = "https://github.com/opendatahub-io/caikit", rev = "79f1f1a"}
+protobuf  ="4.24.4"
+alchemy-config="1.1.2"
+alchemy-logging="1.2.1"
+grpcio = "1.59.0"
+grpcio-reflection = "1.59.0"
+#build time dependencies
+grpcio-tools = "1.59.0"
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B101"]
+
+[tool.pytest.ini_options]
+log_cli=true
+log_format = "%(asctime)s %(levelname)s %(message)s"
+log_date_format = "%Y-%m-%d %H:%M:%S"
+addopts = "-ra --cov-config pyproject.toml"
 
