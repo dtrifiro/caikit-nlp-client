@@ -54,16 +54,13 @@ def model_name():
     return available_models[0]
 
 
-pytestmark = pytest.mark.parametrize("insecure_value", [True, False], scope="session")
-
-
-@pytest.fixture(autouse=True, scope="session")
-def insecure(insecure_value):
-    yield insecure_value
+@pytest.fixture(autouse=True, scope="session", params=[True, False])
+def insecure(request):
+    yield request.param
 
 
 @pytest.fixture(scope="session")
-def caikit_nlp_runtime(grpc_server_port, http_server_port, insecure: bool):
+def caikit_nlp_runtime(grpc_server_port, http_server_port, insecure):
     models_directory = str(Path(__file__).parent / "tiny_models")
 
     tgis_backend_config = [
@@ -132,15 +129,13 @@ def channel_factory(host: str, port: int, insecure: bool):
 
 
 @pytest.fixture(scope="session")
-def channel(grpc_server_port, grpc_server, insecure: bool):
+def channel(grpc_server_port, grpc_server, insecure):
     """Returns returns a grpc client connected to a locally running server"""
     return channel_factory("localhost", grpc_server_port, insecure)
 
 
 @pytest.fixture(scope="session")
-def grpc_server(
-    caikit_nlp_runtime, grpc_server_port, mock_text_generation, insecure: bool
-):
+def grpc_server(caikit_nlp_runtime, grpc_server_port, mock_text_generation, insecure):
     from caikit.runtime.grpc_server import RuntimeGRPCServer
 
     grpc_server = RuntimeGRPCServer()
@@ -160,7 +155,7 @@ def grpc_server(
 
 
 @pytest.fixture(scope="session")
-def http_config(caikit_nlp_runtime, insecure: bool):
+def http_config(caikit_nlp_runtime, insecure):
     http_config = HTTPConfig(
         host="localhost",
         port=caikit.config.get_config().runtime.http.port,
