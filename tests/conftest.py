@@ -1,5 +1,4 @@
 import os
-import socket
 import time
 from collections.abc import Iterable
 from pathlib import Path
@@ -99,22 +98,16 @@ def caikit_nlp_runtime(grpc_server_port, http_server_port, insecure):
     caikit.config.configure(config_dict=config)
 
 
-def get_random_port():
-    sock = socket.socket()
-    sock.bind(("", 0))
-    return sock.getsockname()[1]
-
-
 @pytest.fixture(scope="session")
 def grpc_server_port():
     """port for caikit grpc runtime"""
-    return get_random_port()
+    return 8085
 
 
 @pytest.fixture(scope="session")
 def http_server_port():
     """port for caikit grpc runtime"""
-    return get_random_port()
+    return 8080
 
 
 def channel_factory(host: str, port: int, insecure: bool):
