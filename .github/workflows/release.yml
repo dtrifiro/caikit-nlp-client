@@ -14,20 +14,26 @@ jobs:
 
     env:
       FORCE_COLOR: "1"
+      UV_EXTRA_INDEX_URL: "https://download.pytorch.org/whl/cpu"
+      UV_INDEX_STRATEGY: "unsafe-best-match"
 
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5.1.0
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
         with:
+          version: "latest"
           python-version: "3.10"
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
 
-      - name: Upgrade pip and nox
+      - name: Install Nox
         run: |
-          pip install -U pip nox
-          pip --version
+          uv pip install nox
+          nox --version
 
       - name: Build package
         run: |

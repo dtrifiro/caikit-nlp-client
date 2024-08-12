@@ -12,6 +12,7 @@ import nox
 package = "caikit_nlp_client"
 python_versions = ["3.12", "3.11", "3.10"]
 nox.needs_version = ">= 2021.6.6"
+nox.options.default_venv_backend = "uv"
 nox.options.sessions = ("pre-commit", "mypy", "tests", "build")
 
 
@@ -113,9 +114,6 @@ def precommit(session: nox.Session) -> None:
 def mypy(session: nox.Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or ["src", "tests"]
-    session.install(
-        "--index-url=https://download.pytorch.org/whl/cpu", "torch"
-    )  # use torch-cpu to speed up tests
     session.install(".[dev,tests]")
     session.run("python", "-m", "mypy", *args)
     if not session.posargs:
@@ -125,10 +123,8 @@ def mypy(session: nox.Session) -> None:
 @nox.session(python=python_versions)
 def tests(session: nox.Session) -> None:
     """Run the test suite."""
-    session.install(
-        "--index-url=https://download.pytorch.org/whl/cpu", "torch"
-    )  # use torch-cpu to speed up tests
     session.install(".[tests]")
+
     try:
         session.run(
             "pytest",
