@@ -104,7 +104,7 @@ def test_request_exception_handling(
         detail = "user requested an exception"
         prompt = "[[raise exception]] dummy"
         match = f"{detail}"
-        match_stream = f"{stream_exc_prefix} {detail}"
+        match_stream = detail
         kwargs = {}
 
     with pytest.raises(
