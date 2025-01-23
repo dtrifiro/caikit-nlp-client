@@ -55,9 +55,9 @@ def generated_text_stream_result(caikit_test_producer, generated_text, prompt):
     input_token_count = len(token_list)
 
     generated_tokens = ["", "", "a", " ", "s", "y", "m", "phon", "y", ""]
-    assert (
-        "".join(generated_tokens) == generated_text
-    ), "generated_tokens should match the generated_text"
+    assert "".join(generated_tokens) == generated_text, (
+        "generated_tokens should match the generated_text"
+    )
 
     result = []
     for token in generated_tokens:

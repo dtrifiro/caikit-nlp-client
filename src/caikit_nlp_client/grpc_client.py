@@ -111,7 +111,7 @@ class GrpcClient:
         except grpc._channel._MultiThreadedRendezvous as exc:
             log.error("Could not connect to the server: %s", exc.details())
             raise RuntimeError(
-                f"Could not connect to {host}:{port}:" f"{exc.details()}"
+                f"Could not connect to {host}:{port}:{exc.details()}"
             ) from None
         except KeyError as exc:
             log.error("The grpc server does not have the type: %s", exc)
